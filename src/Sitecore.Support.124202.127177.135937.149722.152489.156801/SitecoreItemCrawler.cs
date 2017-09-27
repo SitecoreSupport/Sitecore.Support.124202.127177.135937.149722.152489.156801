@@ -938,7 +938,7 @@ namespace Sitecore.Support.ContentSearch
           latestItem = Data.Database.GetItem(latestItemUri);
         }
 
-        if (latestItem != null && (latestItem.Version.Number < itemUri.Version.Number || latestItem.IsFallback))
+        if (latestItem != null && (latestItem.Version.Number < itemUri.Version.Number || latestItem.IsFallback) && latestItem.Versions.Count > 0) // Sitecore.Support.141095
           yield return new SitecoreItemUniqueId(latestItem.Uri);
       }
     }
