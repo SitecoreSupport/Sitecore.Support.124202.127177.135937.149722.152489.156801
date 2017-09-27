@@ -63,9 +63,6 @@
     <Compile Include="SitecoreItemCrawler.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Config\Include\zzz\Sitecore.Support.124202.127177.135937.149722.152489.156801.config" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
     <None Include="web.config" />
   </ItemGroup>
