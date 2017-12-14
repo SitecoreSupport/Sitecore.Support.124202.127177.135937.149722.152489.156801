@@ -272,10 +272,15 @@ namespace Sitecore.Support.ContentSearch
     {
       Assert.ArgumentNotNull(indexableUniqueId, "indexableUniqueId");
 
+      #region remove fuctionality which was added in next Sitecore releases
+      /*
       var contextEx = context as ITrackingIndexingContext;
       var skipIndexable = contextEx != null && !contextEx.Processed.TryAdd(indexableUniqueId, null);
 
       if (skipIndexable || !ShouldStartIndexing(indexingOptions))
+      */
+      #endregion
+      if (!ShouldStartIndexing(indexingOptions))
         return;
 
       var options = this.DocumentOptions;
@@ -292,6 +297,8 @@ namespace Sitecore.Support.ContentSearch
 
           if (item != null)
           {
+            #region remove fuctionality which was added in next Sitecore releases
+            /*
             // check if we moved item out of the index's root.
             bool needDelete = operationContext.OldParentId != Guid.Empty
                    && this.IsRootOrDescendant(new ID(operationContext.OldParentId))
@@ -302,6 +309,8 @@ namespace Sitecore.Support.ContentSearch
               this.Delete(context, indexableUniqueId);
               return;
             }
+            */
+            #endregion
 
             this.UpdateHierarchicalRecursive(context, item, CancellationToken.None);
             return;
@@ -443,12 +452,16 @@ namespace Sitecore.Support.ContentSearch
         return false;
       }
 
+      #region remove fuctionality which was added in next Sitecore releases
+      /*
       if (operationContext != null
         && operationContext.OldParentId != Guid.Empty
         && this.IsRootOrDescendant(new ID(operationContext.OldParentId)))
       {
         return false;
       }
+      */
+      #endregion
 
       Item item = Data.Database.GetItem(indexableUniqueId as SitecoreItemUniqueId);
 
