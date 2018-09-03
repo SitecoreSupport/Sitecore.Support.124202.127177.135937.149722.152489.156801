@@ -643,6 +643,8 @@ namespace Sitecore.Support.ContentSearch
       this.UpdateClones(context, versionIndexable);
 
       this.UpdateLanguageFallbackDependentItems(context, versionIndexable, operationContext);
+
+      this.DoUpdateFallbackField(context, versionIndexable.UniqueId);
     }
 
     /// <summary>
